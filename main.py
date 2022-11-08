@@ -13,7 +13,7 @@ lowercase_letters = uppercase_letters.lower()
 numbers = '0123456789'
 
 upper, lower, nums = True, True, True
-all= ''
+all = ''
 
 if upper:
     all += uppercase_letters
