@@ -1,6 +1,6 @@
-#TASK2
-
 import random
+file = open("password_generator.txt","a")
+#file.write("numero = % s"%numero)
 
 def password_generator():
 
@@ -23,46 +23,39 @@ def password_generator():
 
     for x in range(amount):
         password = "".join(random.sample(all,lenght))
+
     return password
-
-
     #print(password)
 
-password_generator()
 
 option = "0"
 saved = {}
 
-while option != 3:
-    print("Hello to Generate Pasword!")
-    print("1. Password generator")
-    print("2. Get password")
+while True:
+    print("Hello to Password Generator!")
+    print('****************************************')
+    print("1. Generate a Password for an account")
+    print("2. Get password for an account")
     print("3. Exit")
 
-    option = input("Enter a option: ")
+    option = input("\nPlease enter a number option: ")
 
     if option == "1":
         account = input("Enter the account name for the generated password: ")
         saved[account] = password_generator()
         print("\n", account, ":", saved[account])
 
+        file.write("Name: " + account + " and password: " + saved[account] + "\n")
+
     elif option == "2":
-        account = input("\n Enter the name of the account you want to get the password for: ")
-        if account in saved:
-            print("\n", account, ":", saved[account])
+        account = input("\n Enter the name account : ")
+        if saved.get(account) == None:
+            print("The enter account isn't registrated, please register it first")
         else:
-            print("\n", "The account entered does not exist")
+            print(f'{account} : {saved.get(account)}')
 
     elif option == "3":
-        pass
-
+        print("Exit")
+        break
     else:
         print("\n The number entered is not valid, please enter a valid number")
-
-
-
-
-
-
-
-
